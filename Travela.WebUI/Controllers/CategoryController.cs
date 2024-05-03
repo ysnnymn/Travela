@@ -14,11 +14,10 @@ namespace Travela.WebUI.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
-
         public async Task<IActionResult> CategoryList()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7136/api/Categories");
+            var responseMessage = await client.GetAsync("https://localhost:7136/api/Categories/CategoryList");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -39,12 +38,17 @@ namespace Travela.WebUI.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createCategoryDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7136/api/Categories", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:7136/api/Categories/CreateCategory", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("CategoryList");
             }
             return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> UpdateCategory(int id)
+        {
+
         }
     }
 }

@@ -15,29 +15,37 @@ namespace Travela.WebApi.Controllers
         {
             _destinationService = destinationService;
         }
-        [HttpGet]
+        [HttpGet("DestinationList")]
         public IActionResult DestinationList()
         { 
             var values=_destinationService.TGetListAll();   
             return Ok(values);
         }
-        [HttpPost]
+        [HttpPost("CreateDestination")]
         public IActionResult CreateDestination(Destination destination)
         {
             _destinationService.TInsert(destination);
             return Ok("Rota Başarıyla Eklendi");
         }
-        [HttpDelete]
+        [HttpDelete("DeleteDestination")]
         public IActionResult DeleteDestination(int id)
         {
             _destinationService.TDelete(id);
             return Ok("Rota Başarıyla Silindi.");
         }
-        [HttpPut]
+
+        [HttpPut("UpdateDestination")]
         public IActionResult UpdateDestination(Destination destination)
         {
             _destinationService.TUpdate(destination);
-            return Ok("Rota Başarıyla Silindi.");
+            return Ok("Rota Başarıyla Güncellendi.");
+        }
+
+        [HttpGet("GetDestination")]
+        public IActionResult GetDestination(int id)
+        {
+           
+            return Ok(_destinationService.TGetById(id));
         }
 
     }

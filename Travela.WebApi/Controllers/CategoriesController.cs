@@ -15,19 +15,19 @@ namespace Travela.WebApi.Controllers
         {
             _categoryService = categoryService;
         }
-        [HttpGet]
+        [HttpGet("CategoryList")]
         public IActionResult CategoryList()
         {
             var values=_categoryService.TGetListAll();
             return Ok(values);
         }
-        [HttpPost]
+        [HttpPost("CreateCategory")]
         public IActionResult CreateCategory(Category category)
         {
             _categoryService.TInsert(category);
             return Ok("Kategori Ekleme İşlemi Başarıyla Tamamlandı.");
         }
-        [HttpDelete]
+        [HttpDelete("DeleteCategroy")]
         public IActionResult DeleteCategory(int id)
         {
             _categoryService.TDelete(id);
@@ -39,11 +39,16 @@ namespace Travela.WebApi.Controllers
             var value=_categoryService.TGetById(id);
             return Ok(value);
         }
-        [HttpPut]
+        [HttpPut("UpdateCategory")]
         public IActionResult UpdateCategory(Category category)
         {
             _categoryService.TUpdate(category);
             return Ok("Kategori Güncelleme İşlemi Başarıyla Tamamlandı.");
+        }
+        [HttpGet("CategoryCount")]
+        public IActionResult CategoryCount()
+        {
+            return Ok(_categoryService.TGetCategoryCount());
         }
     }
 }
