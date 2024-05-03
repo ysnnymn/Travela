@@ -2,10 +2,12 @@
 @{
     Layout = null;
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
     <br /><br />
-    <table class="table  table-bordered">
+    <table class="table table-hovet">
         <tr>
             <th>#</th>
             <th>Kategori Adı</th>
@@ -19,8 +21,8 @@
                 <td>@item.CategoryId</td>
                 <td>@item.CategoryName</td>
                 <td>@item.ImageUrl</td>
-                <td><a href="#" class="btn btn-danger">Sil</a></td>
-                <td><a href="#" class="btn btn-success">Güncelle</a></td>
+                <td><a href="DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
+                <td><a href="UpdateCategory/@item.CategoryId" class="btn btn-success">Güncelle</a></td>
             </tr>
             
         }

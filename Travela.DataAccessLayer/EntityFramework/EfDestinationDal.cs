@@ -10,10 +10,8 @@ using Travela.EntityLayer.Concrete;
 
 namespace Travela.DataAccessLayer.EntityFramework
 {
-    public class EfDestinationDal : GenericRepository<Destination>, IDestinationDal
+    public class EfDestinationDal : GenericRepository<Destination,TravelaContext>, IDestinationDal
     {
-        public EfDestinationDal(TravelaContext context) : base(context)
-        {
-        }
+       
     }
 }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Travela.EntityLayer.Abstract;
 
 namespace Travela.EntityLayer.Concrete
 {
-    public class Destination
+    public class Destination:IEntity
     {
         public int DestinationId { get; set; }
         public string City { get; set; }

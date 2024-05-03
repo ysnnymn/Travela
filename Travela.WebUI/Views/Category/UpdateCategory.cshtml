@@ -1,4 +1,4 @@
-﻿@model Travela.WebUI.Dtos.CategoryDtos.CreateCategoryDto
+﻿@model Travela.WebUI.Dtos.CategoryDtos.UpdateCategoryDto
 @{
     Layout = null;
 }
@@ -7,6 +7,7 @@
 <form method="post">
     <div class="container">
         <br /><br />
+        <input type="hidden" asp-for="CategoryId" />
         <label>Kategori Adı</label>
         <input type="text" asp-for="CategoryName" class="form-control" />
         <br />

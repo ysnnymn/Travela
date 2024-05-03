@@ -10,13 +10,8 @@ using Travela.EntityLayer.Concrete;
 
 namespace Travela.DataAccessLayer.EntityFramework
 {
-    public class EfCategoryDal : GenericRepository<Category>, ICategoryDal
+    public class EfCategoryDal : GenericRepository<Category, TravelaContext>, ICategoryDal
     {
-        public EfCategoryDal(TravelaContext context) : base(context)
-        {
-            
-        }
-
         public int GetCategoryCount()
         {
             var context = new TravelaContext();
@@ -25,3 +20,6 @@ namespace Travela.DataAccessLayer.EntityFramework
         }
     }
 }
+
+   
+

@@ -11,7 +11,7 @@ namespace Travela.BusinessLayer.Concrete
 {
     public class DestinationManager : IDestinationService
     {
-      private readonly  IDestinationDal _destinationDal;
+        private readonly IDestinationDal _destinationDal;
 
         public DestinationManager(IDestinationDal destinationDal)
         {
@@ -20,12 +20,12 @@ namespace Travela.BusinessLayer.Concrete
 
         public void TDelete(int id)
         {
-           _destinationDal.Delete(id);
+            _destinationDal.Delete(id);
         }
 
         public Destination TGetById(int id)
         {
-           return _destinationDal.GetById(id);
+            return _destinationDal.GetById(x=>x.DestinationId==id);
         }
 
         public List<Destination> TGetListAll()
@@ -40,7 +40,7 @@ namespace Travela.BusinessLayer.Concrete
 
         public void TUpdate(Destination entity)
         {
-           _destinationDal.Update(entity);
+            _destinationDal.Update(entity);
         }
     }
 }

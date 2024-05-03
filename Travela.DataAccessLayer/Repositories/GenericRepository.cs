@@ -1,49 +1,74 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Travela.DataAccessLayer.Abstract;
 using Travela.DataAccessLayer.Context;
+using Travela.EntityLayer.Abstract;
 
 namespace Travela.DataAccessLayer.Repositories
 {
-    public class GenericRepository<T> : IGenericDal<T> where T : class
+    public class GenericRepository<TEntity, TContext> : IGenericDal<TEntity>
+         where TEntity : class, IEntity, new()
+        where TContext : DbContext, new()
     {
-        private readonly TravelaContext _context;
-
-        public GenericRepository(TravelaContext context)
-        {
-            _context = context;
-        }
-
         public void Delete(int id)
         {
-           var value=_context.Set<T>().Find(id);
-            _context.Set<T>().Remove(value);
-            _context.SaveChanges();
+            using (TContext context = new TContext())
+            {
+                var entity = context.Set<TEntity>().Find(id);
+                if (entity != null)
+                {
+                    var deletedEntity = context.Entry(entity);
+                    deletedEntity.State = EntityState.Deleted;
+                    context.SaveChanges();
+                }
+                else
+                {
+                    // Belirtilen ID'ye sahip bir varlık bulunamazsa uygun bir işlem yapılabilir.
+                    // Örneğin, bir hata fırlatılabilir veya bir geri dönüş değeri gönderilebilir.
+                }
+            }
         }
 
-        public T GetById(int id)
+
+        public TEntity GetById(Expression<Func<TEntity, bool>> filter)
         {
-            return _context.Set<T>().Find(id);
+            using (TContext context = new TContext())
+            {
+                return context.Set<TEntity>().SingleOrDefault(filter);
+            }
         }
 
-        public List<T> GetListAll()
+        public List<TEntity> GetListAll(Expression<Func<TEntity, bool>> filter = null)
         {
-            return _context.Set<T>().ToList();
+            using (TContext context = new TContext())
+            {
+                return filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();
+            }
         }
 
-        public void Insert(T entity)
+        public void Insert(TEntity entity)
         {
-            _context.Set<T>().Add(entity);
-            _context.SaveChanges();
+            using (TContext context = new TContext())
+            {
+                var addedEntity = context.Entry(entity);
+                addedEntity.State = EntityState.Added;
+                context.SaveChanges();
+            }
         }
 
-        public void Update(T entity)
+        public void Update(TEntity entity)
         {
-            _context.Set<T>().Update(entity);
-            _context.SaveChanges();
+            using (TContext context = new TContext())
+            {
+                var updatedEntity = context.Entry(entity);
+                updatedEntity.State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }
