@@ -1,3 +1,9 @@
+using Travela.BusinessLayer.Abstract;
+using Travela.BusinessLayer.Concrete;
+using Travela.DataAccessLayer.Abstract;
+using Travela.DataAccessLayer.Concrete;
+using Travela.DataAccessLayer.Context;
+
 namespace Travela.WebApi;
 
 public class Program
@@ -7,6 +13,9 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
+        builder.Services.AddDbContext<TravelaContext>();
+        builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+        builder.Services.AddScoped<ICategoryService, CategoryManager>();
 
         builder.Services.AddControllers();
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

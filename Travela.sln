@@ -1,8 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travela.WebApi", "Travela.WebApi\Travela.WebApi.csproj", "{BC436B90-12BA-4A5D-A766-00D6319D0CED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travela.EntityLayer", "Travela.EntityLayer\Travela.EntityLayer.csproj", "{0C793982-8CBF-4FC0-A4BD-5CE210D7431C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travela.BusinessLayer", "Travela.BusinessLayer\Travela.BusinessLayer.csproj", "{192FFC61-D757-45AF-A925-9D2903B4162F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travela.DataAccessLayer", "Travela.DataAccessLayer\Travela.DataAccessLayer.csproj", "{863F3A38-33EC-4E5C-821F-0538603C0E07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC436B90-12BA-4A5D-A766-00D6319D0CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC436B90-12BA-4A5D-A766-00D6319D0CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC436B90-12BA-4A5D-A766-00D6319D0CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC436B90-12BA-4A5D-A766-00D6319D0CED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C793982-8CBF-4FC0-A4BD-5CE210D7431C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C793982-8CBF-4FC0-A4BD-5CE210D7431C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C793982-8CBF-4FC0-A4BD-5CE210D7431C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C793982-8CBF-4FC0-A4BD-5CE210D7431C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{192FFC61-D757-45AF-A925-9D2903B4162F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{192FFC61-D757-45AF-A925-9D2903B4162F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{192FFC61-D757-45AF-A925-9D2903B4162F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{192FFC61-D757-45AF-A925-9D2903B4162F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{863F3A38-33EC-4E5C-821F-0538603C0E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{863F3A38-33EC-4E5C-821F-0538603C0E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{863F3A38-33EC-4E5C-821F-0538603C0E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{863F3A38-33EC-4E5C-821F-0538603C0E07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
