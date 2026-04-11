@@ -1,0 +1,6 @@
+@Travela.WebApi_HostAddress = http://localhost:5005
+
+GET {{Travela.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
