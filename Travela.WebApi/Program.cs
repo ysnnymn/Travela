@@ -4,38 +4,48 @@ using Travela.DataAccessLayer.Abstract;
 using Travela.DataAccessLayer.Concrete;
 using Travela.DataAccessLayer.Context;
 
-namespace Travela.WebApi;
+var builder = WebApplication.CreateBuilder(args);
 
-public class Program
+#region SERVICES
+
+// DB Context
+builder.Services.AddDbContext<TravelaContext>();
+
+// Dependency Injection
+builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+
+builder.Services.AddScoped<IDestinationDal, EfDestinationDal>();
+builder.Services.AddScoped<IDestinationService, DestinationManager>();
+
+// Controllers
+builder.Services.AddControllers();
+
+// Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+#endregion
+
+var app = builder.Build();
+
+#region MIDDLEWARE PIPELINE
+
+// Swagger (sadece development)
+if (app.Environment.IsDevelopment())
 {
-    public static void Main(string[] args)
-    {
-        var builder = WebApplication.CreateBuilder(args);
-
-        // Add services to the container.
-        builder.Services.AddDbContext<TravelaContext>();
-        builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
-        builder.Services.AddScoped<ICategoryService, CategoryManager>();
-
-        builder.Services.AddControllers();
-        // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-        builder.Services.AddOpenApi();
-
-        var app = builder.Build();
-
-        // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
-            app.MapOpenApi();
-        }
-
-        app.UseHttpsRedirection();
-
-        app.UseAuthorization();
-
-
-        app.MapControllers();
-
-        app.Run();
-    }
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
+// HTTPS redirect
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+// Controllers map
+app.MapControllers();
+
+#endregion
+
+app.Run();

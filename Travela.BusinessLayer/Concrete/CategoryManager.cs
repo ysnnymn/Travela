@@ -38,4 +38,9 @@ public class CategoryManager:ICategoryService
     {
         _categoryDal.Delete(entity);
     }
+
+    public int TGetCategoryCount()
+    {
+      return  _categoryDal.GetCategoryCount();
+    }
 }
