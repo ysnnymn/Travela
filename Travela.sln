@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travela.BusinessLayer", "Tr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travela.DataAccessLayer", "Travela.DataAccessLayer\Travela.DataAccessLayer.csproj", "{863F3A38-33EC-4E5C-821F-0538603C0E07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travela.WebUI", "Travela.WebUI\Travela.WebUI.csproj", "{8A2AB3F1-0A4A-4111-9197-4EAA62705D10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{863F3A38-33EC-4E5C-821F-0538603C0E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{863F3A38-33EC-4E5C-821F-0538603C0E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{863F3A38-33EC-4E5C-821F-0538603C0E07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A2AB3F1-0A4A-4111-9197-4EAA62705D10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A2AB3F1-0A4A-4111-9197-4EAA62705D10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A2AB3F1-0A4A-4111-9197-4EAA62705D10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A2AB3F1-0A4A-4111-9197-4EAA62705D10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
