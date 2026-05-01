@@ -25,8 +25,8 @@
                 <td>@item.Country</td>
                 <td>@item.Price</td>
                 <td>@item.Date.ToString("dd-MMM-yyyy")</td>
-                <td><a href="#" class="btn btn-danger">Sil</a></td>
-                <td><a href="#" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Destination/DeleteDestination/@item.DestinationId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Destination/UpdateDestination/@item.DestinationId" class="btn btn-success">Güncelle</a></td>
             </tr>
         }
 
