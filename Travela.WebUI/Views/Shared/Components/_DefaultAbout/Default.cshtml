@@ -1,10 +1,11 @@
+@model Travela.EntityLayer.Concrete.About
 <div class="container-fluid about py-5">
     <div class="container py-5">
         <div class="row g-5 align-items-center">
 
             <div class="col-lg-5">
                 <div class="h-100" style="border: 50px solid; border-color: transparent #13357B transparent #13357B;">
-                    <img src="/travela/img/about-img.jpg" class="img-fluid w-100 h-100" alt="">
+                    <img src="@Model.ImageUrl" class="img-fluid w-100 h-100" alt="">
                 </div>
             </div>
 
@@ -14,19 +15,13 @@
                 <h5 class="section-about-title pe-3">Hakkımızda</h5>
 
                 <h1 class="mb-4">
-                    <span class="text-primary">Travela</span>'ya Hoş Geldiniz
+                    <span class="text-primary">Travela</span>'@Model.Title
+                    
                 </h1>
 
+                
                 <p class="mb-4">
-                    Travela olarak sizlere unutulmaz seyahat deneyimleri sunmayı hedefliyoruz.
-                    Profesyonel ekibimizle birlikte en güzel destinasyonları keşfetmenizi,
-                    konforlu ve güvenli bir tatil geçirmenizi sağlıyoruz.
-                </p>
-
-                <p class="mb-4">
-                    Yurt içi ve yurt dışı turlarımız, kaliteli konaklama seçeneklerimiz
-                    ve müşteri memnuniyeti odaklı hizmet anlayışımız ile her zaman yanınızdayız.
-                    Hayalinizdeki tatil için doğru adrestesiniz.
+                    @Model.Description
                 </p>
 
                 <div class="row gy-2 gx-4 mb-4">

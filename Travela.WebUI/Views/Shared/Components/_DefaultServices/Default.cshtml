@@ -1,3 +1,5 @@
+@using Travela.EntityLayer.Concrete
+
 <div class="container-fluid bg-light service py-5">
     <div class="container py-5">
 
@@ -8,180 +10,73 @@
 
         <div class="row g-4">
 
+            <!-- Sol taraf -->
             <div class="col-lg-6">
                 <div class="row g-4">
 
-                    <div class="col-12">
-                        <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
+                    @foreach (var item in (List<Service>)ViewBag.LeftServices)
+                    {
+                        <div class="col-12">
+                            <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
 
-                            <div class="service-content text-end">
-                                <h5 class="mb-4">Dünya Çapında Turlar</h5>
+                                <div class="service-content text-end">
+                                    <h5 class="mb-4">@item.Title</h5>
 
-                                <p class="mb-0">
-                                    Profesyonel rehberler eşliğinde dünyanın en popüler
-                                    destinasyonlarını keşfetme fırsatı sunuyoruz.
-                                    Unutulmaz seyahat deneyimleri için yanınızdayız.
-                                </p>
+                                    <p class="mb-0">
+                                        @item.Description
+                                    </p>
+                                </div>
+
+                                <div class="service-icon p-4">
+                                    <i class="@item.Icon fa-4x text-primary"></i>
+                                </div>
+
                             </div>
-
-                            <div class="service-icon p-4">
-                                <i class="fa fa-globe fa-4x text-primary"></i>
-                            </div>
-
                         </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
-
-                            <div class="service-content text-end">
-                                <h5 class="mb-4">Otel Rezervasyonu</h5>
-
-                                <p class="mb-0">
-                                    Konforlu ve kaliteli otellerde en uygun fiyatlarla
-                                    rezervasyon yapmanıza yardımcı oluyoruz.
-                                    Tatilinizi güvenle planlayabilirsiniz.
-                                </p>
-                            </div>
-
-                            <div class="service-icon p-4">
-                                <i class="fa fa-hotel fa-4x text-primary"></i>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
-
-                            <div class="service-content text-end">
-                                <h5 class="mb-4">Seyahat Rehberliği</h5>
-
-                                <p class="mb-0">
-                                    Deneyimli rehberlerimiz sayesinde gezdiğiniz yerler hakkında
-                                    detaylı bilgi alabilir ve seyahatinizi daha keyifli hale getirebilirsiniz.
-                                </p>
-                            </div>
-
-                            <div class="service-icon p-4">
-                                <i class="fa fa-user fa-4x text-primary"></i>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
-
-                            <div class="service-content text-end">
-                                <h5 class="mb-4">Etkinlik Organizasyonu</h5>
-
-                                <p class="mb-0">
-                                    Kurumsal etkinlikler, özel organizasyonlar ve tatil planlamaları
-                                    için profesyonel çözümler sunuyoruz.
-                                </p>
-                            </div>
-
-                            <div class="service-icon p-4">
-                                <i class="fa fa-cog fa-4x text-primary"></i>
-                            </div>
-
-                        </div>
-                    </div>
+                    }
 
                 </div>
             </div>
 
+            <!-- Sağ taraf -->
             <div class="col-lg-6">
                 <div class="row g-4">
 
-                    <div class="col-12">
-                        <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
+                    @foreach (var item in (List<Service>)ViewBag.RightServices)
+                    {
+                        <div class="col-12">
+                            <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
 
-                            <div class="service-icon p-4">
-                                <i class="fa fa-globe fa-4x text-primary"></i>
+                                <div class="service-icon p-4">
+                                    <i class="@item.Icon fa-4x text-primary"></i>
+                                </div>
+
+                                <div class="service-content">
+                                    <h5 class="mb-4">@item.Title</h5>
+
+                                    <p class="mb-0">
+                                        @item.Description
+                                    </p>
+                                </div>
+
                             </div>
-
-                            <div class="service-content">
-                                <h5 class="mb-4">Yurt Dışı Turları</h5>
-
-                                <p class="mb-0">
-                                    Avrupa’dan Asya’ya kadar birçok farklı rota ile
-                                    güvenli ve eğlenceli seyahat fırsatları sunuyoruz.
-                                </p>
-                            </div>
-
                         </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
-
-                            <div class="service-icon p-4">
-                                <i class="fa fa-hotel fa-4x text-primary"></i>
-                            </div>
-
-                            <div class="service-content">
-                                <h5 class="mb-4">Lüks Konaklama</h5>
-
-                                <p class="mb-0">
-                                    Tatiliniz boyunca rahat etmeniz için en kaliteli
-                                    otel ve konaklama seçeneklerini sizler için hazırlıyoruz.
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
-
-                            <div class="service-icon p-4">
-                                <i class="fa fa-user fa-4x text-primary"></i>
-                            </div>
-
-                            <div class="service-content">
-                                <h5 class="mb-4">Profesyonel Rehberler</h5>
-
-                                <p class="mb-0">
-                                    Alanında uzman rehberlerimiz sayesinde seyahatiniz boyunca
-                                    destek alabilir ve yeni kültürleri yakından tanıyabilirsiniz.
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
-
-                            <div class="service-icon p-4">
-                                <i class="fa fa-cog fa-4x text-primary"></i>
-                            </div>
-
-                            <div class="service-content">
-                                <h5 class="mb-4">Özel Tur Planlama</h5>
-
-                                <p class="mb-0">
-                                    Kişiye özel tatil ve tur planlamaları ile hayalinizdeki
-                                    seyahati gerçeğe dönüştürüyoruz.
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
+                    }
 
                 </div>
             </div>
 
+            <!-- Buton -->
             <div class="col-12">
                 <div class="text-center">
-                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">
+                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-2"
+                       href="/Service/ServiceList">
                         Daha Fazla Hizmet
                     </a>
                 </div>
             </div>
 
         </div>
+
     </div>
 </div>

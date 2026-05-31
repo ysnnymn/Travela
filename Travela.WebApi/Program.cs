@@ -18,6 +18,11 @@ builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<IDestinationDal, EfDestinationDal>();
 builder.Services.AddScoped<IDestinationService, DestinationManager>();
 
+builder.Services.AddScoped<IAboutDal, EfAboutDal>();
+builder.Services.AddScoped<IAboutService, AboutManager>();
+builder.Services.AddScoped<IServiceDal, EfServiceDal>();
+builder.Services.AddScoped<IServiceService, ServiceManager>();
+
 // Controllers
 builder.Services.AddControllers();
 

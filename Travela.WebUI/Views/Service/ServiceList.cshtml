@@ -1,0 +1,71 @@
+@model List<Travela.EntityLayer.Concrete.Service>
+
+@{
+   
+    Layout = "~/Views/Default/_DefaultLayout.cshtml";
+}
+
+
+
+<div class="container-fluid bg-light service py-5">
+    <div class="container py-5">
+
+        <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+            <h5 class="section-title px-3">Hizmetlerimiz</h5>
+            <h1 class="mb-0">Sunduğumuz Hizmetler</h1>
+        </div>
+
+        <div class="row g-4">
+
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+
+                if (i % 2 == 0)
+                {
+                    <!-- Sol tasarım -->
+                    <div class="col-lg-6">
+                        <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
+
+                            <div class="service-content text-end">
+                                <h5 class="mb-4">@item.Title</h5>
+
+                                <p class="mb-0">
+                                    @item.Description
+                                </p>
+                            </div>
+
+                            <div class="service-icon p-4">
+                                <i class="@item.Icon fa-4x text-primary"></i>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <!-- Sağ tasarım -->
+                    <div class="col-lg-6">
+                        <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
+
+                            <div class="service-icon p-4">
+                                <i class="@item.Icon fa-4x text-primary"></i>
+                            </div>
+
+                            <div class="service-content">
+                                <h5 class="mb-4">@item.Title</h5>
+
+                                <p class="mb-0">
+                                    @item.Description
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+
+    </div>
+</div>

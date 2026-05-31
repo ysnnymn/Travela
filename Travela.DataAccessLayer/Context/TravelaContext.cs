@@ -15,4 +15,6 @@ public class TravelaContext:DbContext
 
     public DbSet<Destination> Destinations { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<About> Abouts { get; set; }
+    public DbSet<Service> Services { get; set; }
 }
