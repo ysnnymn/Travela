@@ -1,0 +1,139 @@
+@model Travela.EntityLayer.Concrete.About
+
+@{
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="midde_cont">
+    <div class="container-fluid">
+
+        <div class="row column_title">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="page_title">
+                    <h2>Hakkımda</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12">
+
+                <div class="white_shd full margin_bottom_30">
+
+                    <div class="full graph_head">
+                        <div class="heading1 margin_0">
+                            <h2>Hakkımda Tablosu</h2>
+                        </div>
+                    </div>
+
+                    <div class="table_section padding_infor_info">
+
+                        <div class="table-responsive-sm">
+
+                            <table class="table table-dark table-striped">
+
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Başlık</th>
+                                    <th>Açıklama</th>
+                                    <th>Resim</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+
+                                <tr>
+
+                                    <td>@Model.AboutId</td>
+
+                                    <td>@Model.Title</td>
+
+                                    <td>
+                                        @(Model.Description?.Length > 100
+                                            ? Model.Description.Substring(0,100) + "..."
+                                            : Model.Description)
+
+                                        @if (Model.Description?.Length > 100)
+                                        {
+                                            <br />
+
+                                            <button class="btn btn-sm btn-info mt-2"
+                                                    data-toggle="modal"
+                                                    data-target="#aboutModal">
+                                                Daha fazlasını gör
+                                            </button>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <img src="@Model.ImageUrl"
+                                             width="80"
+                                             height="80"
+                                             style="object-fit:cover;border-radius:8px;" />
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="aboutModal" tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    @Model.Title
+                </h5>
+
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                @Model.Description
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal">
+                    Kapat
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
