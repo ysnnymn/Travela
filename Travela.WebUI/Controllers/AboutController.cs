@@ -27,7 +27,5 @@ namespace Travela.WebUI.Controllers
             return View();
         }
 
-      
-
     }
 }
