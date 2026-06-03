@@ -1,3 +1,5 @@
+@model List<Travela.EntityLayer.Concrete.About>
+
 @{
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
@@ -6,6 +8,7 @@
     <div class="container-fluid">
 
         <div class="row column_title">
+            <div class="col-12">
                 <div class="page_title">
                     <h2>Hakkımda</h2>
                 </div>
@@ -14,6 +17,7 @@
 
         <div class="row">
 
+            <div class="col-12">
 
                 <div class="white_shd full margin_bottom_30">
 
@@ -33,21 +37,31 @@
                                     <th>Başlık</th>
                                     <th>Açıklama</th>
                                     <th>Resim</th>
+                                    <th>İşlem</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
 
+                                @foreach (var item in Model)
+                                {
                                     <tr>
 
+                                        <td>@item.AboutId</td>
 
+                                        <td>@item.Title</td>
 
                                         <td>
+                                            @(item.Description?.Length > 100
+                                                ? item.Description.Substring(0,100) + "..."
+                                                : item.Description)
 
+                                            @if (item.Description?.Length > 100)
                                             {
                                                 <br />
                                                 <button class="btn btn-sm btn-info mt-2"
                                                         data-toggle="modal"
+                                                        onclick="setModal('@item.Title', '@item.Description')"
                                                         data-target="#aboutModal">
                                                     Daha fazlasını gör
                                                 </button>
@@ -55,16 +69,34 @@
                                         </td>
 
                                         <td>
+                                            <img src="@item.ImageUrl"
                                                  width="80"
                                                  height="80"
                                                  style="object-fit:cover;border-radius:8px;" />
                                         </td>
 
+                                        <td>
+                                            <a class="btn btn-warning btn-sm">
+                                                Düzenle
+                                            </a>
+                                        </td>
+
                                     </tr>
+                                }
 
                                 </tbody>
 
                             </table>
+
+                            @if (Model == null || !Model.Any())
+                            {
+                                <a asp-controller="AdminAbout"
+                                   asp-action="CreateAbout"
+                                   asp-area="Admin"
+                                   class="btn btn-primary">
+                                    Yeni Hakkımda Girişi
+                                </a>
+                            }
 
                         </div>
 
@@ -79,6 +111,7 @@
     </div>
 </div>
 
+<!-- MODAL -->
 <div class="modal fade" id="aboutModal" tabindex="-1">
 
     <div class="modal-dialog">
@@ -87,12 +120,15 @@
 
             <div class="modal-header">
 
+                <h5 class="modal-title" id="modalTitle"></h5>
 
+                <button type="button" class="close" data-dismiss="modal">
                     <span>&times;</span>
                 </button>
 
             </div>
 
+            <div class="modal-body" id="modalBody">
             </div>
 
         </div>
@@ -100,3 +136,11 @@
     </div>
 
 </div>
+
+<!-- JS -->
+<script>
+    function setModal(title, description) {
+        document.getElementById("modalTitle").innerText = title;
+        document.getElementById("modalBody").innerText = description;
+    }
+</script>
